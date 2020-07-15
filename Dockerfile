@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM arm32v7/ubuntu
 
 LABEL maintainer="tomer.klein@gmail.com"
 RUN apt update
