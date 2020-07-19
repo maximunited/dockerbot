@@ -8,4 +8,4 @@ RUN mkdir /opt/dockerbot
 
 COPY dockerbot.py /opt/dockerbot
 
-ENTRYPOINT ["/usr/bin/python", "/opt/dockerbot/dockerbot.py"]
+ENTRYPOINT ["python", "/opt/dockerbot/dockerbot.py"]
