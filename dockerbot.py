@@ -63,18 +63,18 @@ def handle(msg):
         sys.exit()
     else:
       allowed_ids = os.environ['ALLOWED_IDS']
-    
+
     if str(chat_id) not in allowed_ids:
         bot.sendPhoto(chat_id,"https://github.com/t0mer/dockerbot/raw/master/No-Trespassing.gif")
         return ""
 
-    print ('Got command: %s')%command
+    print ('Got command: %s' % command)
     if command == '/time': #[ Get local time ]#
         bot.sendMessage(chat_id, str(datetime.datetime.now()))
     if command == '/uptime': #[ Get uptime ]#
         bot.sendMessage(chat_id, uptime())
     elif command == '/speed': #[ Run Speedtest ]#
-        x = subprocess.check_output(['speedtest-cli','--share'])
+        x = subprocess.check_output(['speedtest-cli','--share']).decode('utf-8')
         photo = re.search("(?P<url>https?://[^\s]+)", x).group("url")
         bot.sendPhoto(chat_id,photo)
     elif command == '/ip': #[ Get public IP ]#
@@ -159,6 +159,6 @@ else:
 
 MessageLoop(bot, handle).run_as_thread()
 print('I am listening ...')
- 
+
 while 1:
     time.sleep(10)
