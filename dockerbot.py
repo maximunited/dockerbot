@@ -78,7 +78,6 @@ def handle(msg):
         photo = re.search("(?P<url>https?://[^\s]+)", x).group("url")
         bot.sendPhoto(chat_id,photo)
     elif command == '/ip': #[ Get public IP ]#
-        #x = subprocess.check_output(['curl','ipinfo.io/ip'])
         x = requests.get('http://ipinfo.io/ip').content
         bot.sendMessage(chat_id,x)
     elif command == '/disk': #[ Get disk space ]#
