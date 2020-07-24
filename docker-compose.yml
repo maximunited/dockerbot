@@ -1,8 +1,9 @@
-version: "3.7"
+version: "3.8"
 
 services:
   dockerbot:
-    image: techblog/dockerbot
+    build: .
+    # image: techblog/dockerbot
     container_name: dockerbot
     restart: always
     environment:
@@ -14,7 +15,7 @@ services:
       - dockerbot_api_key      
       - dockerbot_allowed_ids
     volumes:
-       - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
  
 secrets:
   dockerbot_allowed_ids:
